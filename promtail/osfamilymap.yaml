@@ -12,23 +12,23 @@
 ---
 Debian:
   pkg:
-    name: TEMPLATE-debian
-  config: /etc/TEMPLATE.d/custom.conf
+    name: promtail-debian
+  config: /etc/promtail.d/custom.conf
 
 RedHat:
   pkg:
-    name: TEMPLATE-redhat
-  config: /etc/TEMPLATE.conf
+    name: promtail-redhat
+  config: /etc/promtail.conf
 
 Suse:
   pkg:
-    name: TEMPLATE-suse
+    name: promtail-suse
 
 Gentoo: {}
 
 Arch:
   pkg:
-    name: TEMPLATE-arch
+    name: promtail-arch
   service:
     name: service-arch
 

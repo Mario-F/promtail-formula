@@ -4,25 +4,25 @@
 {#- Get the `tplroot` from `tpldir` #}
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- set sls_package_install = tplroot ~ '.package.install' %}
-{%- from tplroot ~ "/map.jinja" import TEMPLATE with context %}
+{%- from tplroot ~ "/map.jinja" import promtail with context %}
 {%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
 
 include:
   - {{ sls_package_install }}
 
-TEMPLATE-config-file-file-managed:
+promtail-config-file-file-managed:
   file.managed:
-    - name: {{ TEMPLATE.config }}
+    - name: {{ promtail.config }}
     - source: {{ files_switch(['example.tmpl'],
-                              lookup='TEMPLATE-config-file-file-managed'
+                              lookup='promtail-config-file-file-managed'
                  )
               }}
     - mode: 644
     - user: root
-    - group: {{ TEMPLATE.rootgroup }}
+    - group: {{ promtail.rootgroup }}
     - makedirs: True
     - template: jinja
     - require:
       - sls: {{ sls_package_install }}
     - context:
-        TEMPLATE: {{ TEMPLATE | json }}
+        promtail: {{ promtail | json }}
