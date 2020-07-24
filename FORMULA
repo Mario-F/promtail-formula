@@ -3,7 +3,7 @@ os: Debian, Ubuntu, Raspbian, RedHat, Fedora, CentOS
 os_family: Debian, RedHat
 version: 0.1.0
 release: 1
-minimum_version: 2017.7
+minimum_version: 2018.3.0
 summary: promtail formula
 description: Formula to use as a template for other formulas
 top_level_dir: promtail
