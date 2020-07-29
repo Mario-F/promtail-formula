@@ -6,10 +6,8 @@
 {%- set sls_package_install = tplroot ~ '.package.install' %}
 {%- from tplroot ~ "/map.jinja" import promtail with context %}
 {%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
-
 include:
   - {{ sls_package_install }}
-
 promtail-config-file-file-managed:
   file.managed:
     - name: {{ promtail.config }}
