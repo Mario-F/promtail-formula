@@ -14,7 +14,7 @@ promtail-formula
    :scale: 100%
    :target: https://github.com/semantic-release/semantic-release
 
-Install, configure and manage Loki Promtail.
+Install, configure and manage Grafana Loki Promtail.
 
 .. contents:: **Table of Contents**
    :depth: 1

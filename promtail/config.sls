@@ -23,4 +23,4 @@ promtail-config-file-managed:
     - require:
       - sls: {{ sls_install }}
     - context:
-        promtail: {{ promtail | json }}
+        promtail: {{ promtail }}
