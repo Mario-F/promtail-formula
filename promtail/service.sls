@@ -10,7 +10,7 @@
 # Create service
 promtail-service-unitfile-managed:
   file.managed:
-    - name: /etc/systemd/system/promtail.service
+    - name: /etc/systemd/system/{{ promtail.service.name }}.service
     - source: {{ files_switch(['promtail.service.jinja'], lookup='promtail-service-unitfile-managed') }}
     - template: jinja
     - watch_in:
@@ -29,5 +29,5 @@ promtail-install-systemd-reload:
 
 promtail-service:
   service.running:
-    - name: promtail
-    - enable: True
+    - name: {{ promtail.service.name }}
+    - enable: {{ promtail.service.enabled }}
