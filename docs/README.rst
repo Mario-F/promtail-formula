@@ -14,8 +14,7 @@ promtail-formula
    :scale: 100%
    :target: https://github.com/semantic-release/semantic-release
 
-A SaltStack formula that is empty. It has dummy content to help with a quick
-start on a new formula and it serves as a style guide.
+Install, configure and manage Loki Promtail.
 
 .. contents:: **Table of Contents**
    :depth: 1
@@ -59,75 +58,22 @@ Available states
 
 *Meta-state (This is a state that includes other states)*.
 
-This installs the promtail package,
-manages the promtail configuration file and then
-starts the associated promtail service.
+This installs the promtail binary, manages the promtail configuration file and then creates and starts the associated promtail service.
 
-``promtail.package``
+``promtail.install``
 ^^^^^^^^^^^^^^^^^^^^
 
-This state will install the promtail package only.
+This state will install the promtail binary and has a dependency on ``promtail.service`` via include list.
 
 ``promtail.config``
 ^^^^^^^^^^^^^^^^^^^
 
-This state will configure the promtail service and has a dependency on ``promtail.install``
-via include list.
+This state will configure the promtail service and has a dependency on ``promtail.install`` via include list.
 
 ``promtail.service``
 ^^^^^^^^^^^^^^^^^^^^
 
-This state will start the promtail service and has a dependency on ``promtail.config``
-via include list.
-
-``promtail.clean``
-^^^^^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-this state will undo everything performed in the ``promtail`` meta-state in reverse order, i.e.
-stops the service,
-removes the configuration file and
-then uninstalls the package.
-
-``promtail.service.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will stop the promtail service and disable it at boot time.
-
-``promtail.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the configuration of the promtail service and has a
-dependency on ``promtail.service.clean`` via include list.
-
-``promtail.package.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the promtail package and has a depency on
-``promtail.config.clean`` via include list.
-
-``promtail.subcomponent``
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-*Meta-state (This is a state that includes other states)*.
-
-This state installs a subcomponent configuration file before
-configuring and starting the promtail service.
-
-``promtail.subcomponent.config``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will configure the promtail subcomponent and has a
-dependency on ``promtail.config`` via include list.
-
-``promtail.subcomponent.config.clean``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This state will remove the configuration of the promtail subcomponent
-and reload the promtail service by a dependency on
-``promtail.service.running`` via include list and ``watch_in``
-requisite.
+This state will create and start the promtail service only.
 
 Testing
 -------
