@@ -5,7 +5,7 @@ promtail-formula
 
 |img_travis| |img_sr|
 
-.. |img_travis| image:: https://travis-ci.com/Mario-F/promtail-formula.svg?branch=master
+.. |img_travis| image:: https://travis-ci.org/Mario-F/promtail-formula.svg?branch=master
    :alt: Travis CI Build Status
    :scale: 100%
    :target: https://travis-ci.com/Mario-F/promtail-formula
