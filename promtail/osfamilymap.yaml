@@ -11,37 +11,29 @@
 # osfamilymap: {}
 ---
 Debian:
-  pkg:
-    name: promtail-debian
-  config: /etc/promtail.d/custom.conf
+  ostype: linux
 
 RedHat:
-  pkg:
-    name: promtail-redhat
-  config: /etc/promtail.conf
+  ostype: linux
 
 Suse:
-  pkg:
-    name: promtail-suse
+  ostype: linux
 
-Gentoo: {}
+Gentoo:
+  ostype: linux
 
 Arch:
-  pkg:
-    name: promtail-arch
-  service:
-    name: service-arch
+  ostype: linux
 
-Alpine: {}
+Alpine:
+  ostype: linux
 
 FreeBSD:
+  ostype: freebsd
   rootgroup: wheel
 
-OpenBSD:
-  rootgroup: wheel
+Windows:
+  ostype: windows
 
-Solaris: {}
-
-Windows: {}
-
-MacOS: {}
+MacOS:
+  ostype: darwin

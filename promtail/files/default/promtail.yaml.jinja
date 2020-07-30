@@ -3,9 +3,5 @@
 # Your changes will be overwritten.
 ########################################################################
 
-This is another example file from SaltStack template-formula.
-
 # This is here for testing purposes
-{{ promtail | json }}
-
-winner of the merge: {{ promtail['winner'] }}
+{{ promtail.config | yaml }}

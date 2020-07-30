@@ -3,15 +3,31 @@
 
 {#- Get the `tplroot` from `tpldir` #}
 {%- set tplroot = tpldir.split('/')[0] %}
-{%- set sls_config_file = tplroot ~ '.config.file' %}
 {%- from tplroot ~ "/map.jinja" import promtail with context %}
+{%- from tplroot ~ "/libtofs.jinja" import files_switch with context %}
+{%- set promtail_directory = promtail.get('directory') %}
 
-include:
-  - {{ sls_config_file }}
+# Create service
+promtail-service-unitfile-managed:
+  file.managed:
+    - name: /etc/systemd/system/promtail.service
+    - source: {{ files_switch(['promtail.service.jinja'], lookup='promtail-service-unitfile-managed') }}
+    - template: jinja
+    - watch_in:
+      - service: promtail-service
+    - context:
+        pathBin: {{ promtail.directory }}/promtail
+        pathConfig: {{ promtail.config_file }}
 
-promtail-service-running-service-running:
+promtail-install-systemd-reload:
+  cmd.run:
+    - name: systemctl --system daemon-reload
+    - onchanges:
+      - file: promtail-service-unitfile-managed
+    - watch_in:
+      - service: promtail-service
+
+promtail-service:
   service.running:
-    - name: {{ promtail.service.name }}
+    - name: promtail
     - enable: True
-    - watch:
-      - sls: {{ sls_config_file }}

@@ -2,14 +2,24 @@
 # vim: ft=yaml
 ---
 promtail:
-  pkg:
-    name: promtail
+  version: v1.5.0
   rootgroup: root
-  config: '/etc/promtail'
+  config_file: '/opt/promtail/promtail.yaml'
+  directory: '/opt/promtail'
   service:
     name: promtail
-  subcomponent:
-    config: '/etc/promtail-subcomponent-formula.conf'
   # Just here for testing
   added_in_defaults: defaults_value
   winner: defaults
+
+  # Dumped directly to promtail config file
+  config:
+    server:
+      http_listen_port: 9080
+      grpc_listen_port: 0
+
+      positions:
+        filename: /opt/promtail/positions.yaml
+
+      clients:
+        - url: http://127.0.0.1:3100/loki/api/v1/push

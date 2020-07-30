@@ -7,8 +7,6 @@
 {%- import_yaml tplroot ~ "/defaults.yaml" as default_settings %}
 {%- import_yaml tplroot ~ "/osarchmap.yaml" as osarchmap %}
 {%- import_yaml tplroot ~ "/osfamilymap.yaml" as osfamilymap %}
-{%- import_yaml tplroot ~ "/osmap.yaml" as osmap %}
-{%- import_yaml tplroot ~ "/osfingermap.yaml" as osfingermap %}
 
 {#- Retrieve the config dict only once #}
 {%- set _config = salt['config.get'](tplroot, default={}) %}
@@ -23,16 +21,8 @@
           osfamilymap,
           grain='os_family',
           merge=salt['grains.filter_by'](
-            osmap,
-            grain='os',
-            merge=salt['grains.filter_by'](
-              osfingermap,
-              grain='osfinger',
-              merge=salt['grains.filter_by'](
-                _config,
-                default='lookup'
-              )
-            )
+            _config,
+            default='lookup'
           )
         )
       )
@@ -46,11 +36,4 @@
     )
 %}
 
-{#- Change **promtail** to match with your formula's name and then remove this line #}
 {%- set promtail = config %}
-
-{#- Post-processing for specific non-YAML customisations #}
-{%- if grains.os == 'MacOS' %}
-{%-   set macos_group = salt['cmd.run']("stat -f '%Sg' /dev/console") %}
-{%-   do promtail.update({'rootgroup': macos_group}) %}
-{%- endif %}

@@ -16,20 +16,14 @@ amd64:
 x86_64:
   arch: amd64
 
-386:
-  arch: 386
-
 arm64:
   arch: arm64
 
+armhf:
+  arch: arm
+
 armv6l:
-  arch: armv6l
+  arch: arm
 
 armv7l:
-  arch: armv7l
-
-ppc64le:
-  arch: ppc64le
-
-s390x:
-  arch: s390x
+  arch: arm
