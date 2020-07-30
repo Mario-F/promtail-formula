@@ -9,9 +9,6 @@ promtail:
   service:
     name: promtail
     enabled: True
-  # Just here for testing
-  added_in_defaults: defaults_value
-  winner: defaults
 
   # Dumped directly to promtail config file
   config:
