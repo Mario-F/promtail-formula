@@ -45,7 +45,24 @@ Please see `How to contribute <https://github.com/saltstack-formulas/.github/blo
 Special notes
 -------------
 
-None
+To start off you need provide a valid promtail scrape config and your loki server, this is done by expanding the promtail pillar.
+
+At a later time i would like to provide more information and at least a default journald scrape config::
+
+    # Required for openssh.known_hosts
+    promtail:
+      config:
+         clients:
+          - url: http://127.0.0.1:3100/loki/api/v1/push
+      scrape_configs:
+       - job_name: journal
+         journal:
+            path: /var/log/journal
+            labels:
+               job: systemd-journal
+         relabel_configs:
+          - source_labels: ['__journal__systemd_unit']
+            target_label: 'unit'
 
 Available states
 ----------------

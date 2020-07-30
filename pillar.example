@@ -16,8 +16,8 @@ promtail:
       http_listen_port: 9080
       grpc_listen_port: 0
 
-      positions:
-        filename: /opt/promtail/positions.yaml
+    positions:
+      filename: /opt/promtail/positions.yaml
 
-      clients:
-        - url: http://127.0.0.1:3100/loki/api/v1/push
+    clients:
+      - url: http://127.0.0.1:3100/loki/api/v1/push
