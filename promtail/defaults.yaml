@@ -8,7 +8,7 @@ promtail:
   directory: '/opt/promtail'
   service:
     name: promtail
-    enabled: True
+    enabled: true
 
   # Dumped directly to promtail config file
   config:
