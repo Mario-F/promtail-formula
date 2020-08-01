@@ -4,7 +4,7 @@
 service_name = 'promtail'
 
 control 'promtail service' do
-  impact 0.5
+  impact 1
   title 'should be running and enabled'
 
   describe service(service_name) do
