@@ -1,5 +1,18 @@
 # Changelog
 
+# [1.2.0](https://github.com/Mario-F/promtail-formula/compare/v1.1.1...v1.2.0) (2022-06-08)
+
+
+### Bug Fixes
+
+* branch to main ([d05e4f7](https://github.com/Mario-F/promtail-formula/commit/d05e4f7105fdff3f2746f118dc5ea98cfa95c2bb))
+
+
+### Features
+
+* added main release branch ([a511c20](https://github.com/Mario-F/promtail-formula/commit/a511c20c6828864903a4bd2ff1ac27192feb0c9a))
+* added semantic release dryrun ([1e0e42a](https://github.com/Mario-F/promtail-formula/commit/1e0e42aabff45ace192bbc45183f4ed89b6e9653))
+
 # [1.1.0](https://github.com/Mario-F/promtail-formula/compare/v1.0.0...v1.1.0) (2020-08-01)
 
 
