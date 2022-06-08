@@ -2,7 +2,7 @@ name: Release-Dryrun
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   release:
     name: Release-Dryrun
